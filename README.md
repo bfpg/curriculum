@@ -5,7 +5,7 @@ Outline
 -------
 * [Getting Set Up](outline/setup.md)
 * [Introduction to Programming with Clojure](outline/intro.md)
-* [Data Structures](outline/data_structures.md)
+* [Lists](outline/lists.md)
 * [Functions](outline/functions.md)
 * [More Simple Values](outline/simple_values2.md)
 * [More Functions](outline/functions2.md)
