@@ -1,193 +1,344 @@
-Introduction to Programming with Clojure
+Introduction to Programming with Haskell
 ========================================
 
-* Why Clojure?
-* What is Clojure good at?
-* What does Clojure look like?
+* Why Haskell?
+* What is Haskell good at?
+* What does Haskell look like?
 * What is the REPL?
 * Simple values
     - Numbers
 * Assigning names to values
 
-## Why Clojure?
+## Why Haskell?
 
-If you've never programmed before, you may not know that there are many languages to choose from. Some of the other languages you might have heard of or will hear of are C, JavaScript, Python, and Java.
+If you've never programmed before, you may not know that there are
+many languages to choose from. Some of the other languages you might
+have heard of or will hear of are C, JavaScript, Python, and Java.
 
-So why are we teaching Clojure? It's not as popular as any of those languages. We're using Clojure because of three qualities it has that make it an ideal first language to learn--or a great language to learn in addition to others you might already know:
+So why are we teaching Haskell? It's not as popular as any of those
+languages. We're using Haskell because of three qualities it has
+that make it an ideal first language to learn--or a great language
+to learn in addition to others you might already know:
 
-* Clojure is _simple_. That's not to say it's not powerful; it is. The number of concepts you have to know to program in Clojure is very small, however, and easy to grasp. Clojure grows with you as you learn it, and you can be very productive with a small subset of the language.
+* Haskell is _simple_. That's not to say it's not powerful; it is.
+  The number of concepts you have to know to program in Haskell is
+  small, however, and the concepts are easy to grasp.
 
-* Clojure is _all-purpose_. Some languages have a specific focus. JavaScript, for example, was traditionally used only in web pages (although that's changed somewhat). Objective-C is used mainly for iPhone apps. We're going to make a web application today, but you can use Clojure for any sort of application easily.
+* Haskell is _all-purpose_. Some languages have a specific focus.
+  JavaScript, for example, was traditionally used only in web pages
+  (although that's changed somewhat). Objective-C is used mainly for
+  iPhone apps.  Haskell is well suited to these purposes and many
+  more.
 
-* Clojure is _fun_. That's a matter of opinion, of course, but we think it holds true. I hope that during this course you experience the joy of seeing a Clojure program come together and do something powerful and surprising.
+* Haskell is _fun_. That's a matter of opinion, of course, but we
+  think it holds true. I hope that during this course you experience
+  the joy of seeing a Haskell program come together and do something
+  powerful and surprising.
 
-## What is Clojure good at?
+## What is Haskell good at?
 
-So, we said Clojure is all-purpose, and it is. That doesn't mean it doesn't have strong suits, though.
+So, we said Haskell is all-purpose, and it is. That doesn't mean it
+doesn't have strong suits, though.
 
-Clojure is known for being good at data processing. That's because it has a good set of data structures--that is, it has several built-in ways to represent data that are easy to use and powerful.
+Haskell is good at _abstraction_, that is, implementing functions
+(units of software behaviour) that work across different types of
+data, so that you, the programmer, can think in terms of high-level
+concepts and avoid repeating yourself too much.
 
-Clojure is known for its concurrency. Think about writing instructions for four of your friends about how to assemble a treehouse, but instead of writing them so one step is done at a time, each of your friends does part of the job. Then, they coordinate at the right time to assemble those parts into bigger parts, and they do this over and over again until the end, when it all comes together. Those instructions would be really complicated and hard to write--and probably hard to read, too. Clojure gives us some easy ways to write these sorts of instructions for computers.
+Haskell is good at preventing many kinds of mistakes programmers
+make.  Haskell is what is known as a _statically typed_ programming
+language, which means that many kinds of errors can be detected and
+prevented when the source code (what the programmer writes) is
+_compiled_ into the program that the computer actually runs.
 
-Clojure also works well for building web applications, which is what we're going to do together.
+Haskell makes it simple to define rich _data types_ that accurately
+model real-world information.  As a programmer, this means that you
+spend less time worrying about the validity of your data, and more
+time doing useful things with the data.
 
-## What does Clojure look like?
 
-Here's an example of a few lines of Clojure:
+## What does Haskell look like?
 
-```clojure
-(+ 3 4)
-(max 8 17 2)
-(eat "sandwich")
+Here's an example of a _function_ in Haskell:
+
+```haskell
+double :: Integer -> Integer
+double n = 2 * n
 ```
 
-The first thing you notice are parentheses, probably. Parentheses enclose instructions to the computer in Clojure. Every time you see a left parenthesis, the next thing you see will be an instruction of some sort. That instruction is normally what we call a _function_. Functions do all the hard work in Clojure. They take in _arguments_--which is everything else inside the parentheses after the function--and return a new value.
+You probably noticed that the first and second lines look quite
+different.  The first line is the _type signature_ of the function,
+and the second line is the implementation.  We will discuss each
+part separately.
 
-Take a look at the first line. The plus sign that you see is a function. It takes all its arguments and adds them together, returning the sum. This might look confusing if you try to think of it like writing out math, because you'd put the plus sign in a different place that way. Just think of the plus as a function. If you've used Excel, imagine the `SUM()` function in there; it works like that.
+The type signature starts with the name of the function: `double`.
+Functions should have sensible names, but in Haskell, the type
+signature is just as important - if not more so!  The double-colon
+separates the function name from the type information, and can be
+pronounced "_has the type_".
 
-What is the function on the next line? What are its arguments? What do you think it returns? It returns the number 17, which is the largest of the three numbers.
+After the double-colon, we see `Integer -> Integer`, which means
+that when this function is applied to one value of the type
+`Integer` it computes, or _evaluates_, another value of the type
+`Integer`.  In Haskell, arrows (`->`) separate arguments types and
+the return type.
 
-How about the last line? That has a thing called a string in it, which we'll learn more about later. Looks like someone is hungry.
+Type signatures can contain other kinds of information of
+information from what we have just seen, and we will learn about
+these other concepts later.
+
+The second line is the implementation of the function.  We see
+`double` written again, but this time it is followed by `n`.  This
+is a _pattern_ that binds the name `n` to the value of the first
+argument (in our case, the only argument).  Then we see the equals
+sign.  In many programming langauges, the equals sign represents
+assignment of values to variables, but in Haskell it represents
+_equality_.  Function implementations are actually _equations_, so
+you can pronounce the `=` as "_is defined as_".  Finally, we see
+that `double` is defined as `n * 2` (`n` multiplied by two).
 
 ### Comments
 
-When we write code, we try to make it as clear as possible.  Doing so is a huge advantage because our code gets read by others (oftentimes more so than by us!), or we come back to our own code to read it later by which point we may have forgotten each exact detail of the code.  One way that we can clarify our code is annotating it with comments.  Comments are notes that we add to code, for our own sake, that the computer ignores.
+When we write code, we try to make it as clear as possible.  Doing
+so is important because code needs not only to communicate
+information to a computer, but to people as well: other
+programmers, your co-workers, your future self!
 
-In Clojure, comments can be started with a semicolon.  Everything after the semicolon until the end of a line is a comment and gets ignored by the computer.  Only one semicolon is necessary, but sometimes you see two semicolons in a row depending on stylistic tastes.
+In Haskell, we use types to communicate as much as possible.  *Types
+are documentation*.  But in some situations, when Haskell's types
+are not enough, you can use _comments_ to convey additional
+information.  Comments are annotations in source code that are
+ignored by the compiler; they are used to help _people_ understand
+your code.
 
-```clojure
-;; more food code
-(eat "cookie") ; nom nom nom
-(eat "donut") ; mmm donuts
+Comments start with two dashes.  Everything from the dashes to the
+end of the line is a comment and is ignored by the compiler.  There
+is a second comment style supported by Haskell: you can put your
+comment in between a `{-` and a `-}`.  When using this alternative
+syntax, comments can span multiple lines.
+
+```haskell
+{- this is a comment -}
+
+one = 1  -- and so is this
 ```
 
-## What is the REPL?
 
-"REPL" stands for "Read-Eval-Print-Loop," which still doesn't make a ton of sense without context. Many programming languages, including Clojure, have a way to execute code interactively so you get instant feedback. In other words, the code is read, then it is evaluated, then the result is printed, and you begin again--thus, a loop.
+## Simple data types
 
-Clojure has a REPL that you can run from the terminal easily, and we'll talk more about that later, but for now, let's use Light Table's "insta-REPL," a nice way to interact from within Light Table.
+In order to do anything in a programming language, you need have
+_values_ to do things with.  Every value has a _type_, and there are
+many different types of values.  Let's look at some of the common
+types.
 
-Go ahead and start Light Table, if you haven't already. Once it's started, go to the "View" menu and click "Commands." Notice that you can get to the command by typing ctrl+space from now on, if that's faster for you. Type "insta" and press enter when the "Instarepl: Open a Clojure instarepl" choice is highlighted.
+### Numeric types
 
-After you hit enter, a blank new page will open. At the bottom of Light Table, you should see a message about "connecting" or "retrieving deps." Wait for the instarepl to finish connecting before typing anything. Once that's done, let's try out the REPL together! Type `(+ 2 3)` and see what happens. Did you see the result appearing beside what you were typing? Once you'd done that, hit enter and type `(max 8 17 2)`. You might see an error in red while typing. This happens because Light Table is continually evaluating what you are typing, and before you finish, the code might not be valid.
+There are several different types of numbers in Haskell.  There are
+types for _integral_ or whole numbers - `Int` and `Integer` - and
+types for rational numbers - `Float` (a _floating-point_ number) and
+`Double` (also floating point, but with _double_ the precision of
+`Float`).  There are other numeric types, but these are the most
+common.
 
-## Simple values
+(In case you were wondering, the difference between `Int` and
+`Integer` is that `Int` is _bounded_ whereas `Integer` values are
+not.)
 
-In order to do anything in a programming language, you need have values to do stuff with. Simple values are numbers, strings, booleans, and keywords. The first of those, numbers, you can probably guess what it is, but the rest will need some more explanation.
+In source code, numeric values are written in a fairly
+straightforward way:
 
-### Numbers
+```haskell
+anInteger :: Integer
+anInteger = 1
 
-Actually, let's start with numbers. Clojure has several different types of numbers.
-
-First up are integers. Integers are zero and the positive and negative whole numbers, and you write them just like we write them normally. Examples:
-
-```clj
-0
-12
--42
+aFloat :: Float
+aFloat = 3.14  -- not quite pi
 ```
 
-Then we have decimals, also called floats, which are exactly what you think they are. Examples:
+Negative values can be expressed by putting a minus sign in front of
+the number, but due to a quirk in how the compiler _parses_ the
+source code it is often necessary to wrap the number in
+_parentheses_, as below:
 
-```clj
-10.5
--99.9
-0.0000072725
+```haskell
+timesNegativeOne :: Int -> Int
+timesNegativeOne n = n * (-1)
 ```
 
-We also have fractions, also called ratios. Computers cannot perfectly represent all floats, but ratios are always exact. We write them with a slash, like so:
-
-```
-1/2
--7/3
-```
 
 ### Arithmetic
 
-You can add, subtract, multiply, and divide numbers. In Clojure, arithmetic looks a little different than it does when you write out. Look at these examples:
+In Haskell, arithmetic functions look similar to the mathematical
+operations you learned in school.  The following examples are
+contrived but demonstrate these functions in action:
 
-```clj
-(+ 1 1)  ;=> 1 + 1 = 2
-(- 12 4) ;=> 12 - 4 = 8
-(* 13 2) ;=> 13 * 2 = 26
-(/ 27 9) ;=> 27 / 9 = 3
+```haskell
+additionExample         = 1 + 1
+subtractionExample      = 2 - 2
+multiplicationExample   = 3 * 3
+divisionExample         = 4 / 4
 ```
 
-This is called _prefix notation_. What you're used to seeing is called _infix notation_, as the arithmetic operator is in-between the two operands.
+You might also recall that addition and multiplication have a
+different _order of operations_ or _precedence_; multiplication of
+values occurs before addition, for example.  So it is in Haskell.
+But you can use parentheses to force expressions to be evaluated in
+a particular order.
 
-Prefix notation is useful for many reasons. Look at this example of an infix expression and the prefix equivalent:
-
-```
-Infix:  1 + 2 * 3 / 4 + 5 - 6 * 7 / 8 + 9
-
-Prefix: (+ (- (+ (+ 1 (/ (* 2 3) 4)) 5) (/ (* 6 7) 8)) 9)
-```
-
-I imagine both are unclear, but notice that in the prefix version, you do not have to ever think about the precedence of operators. Because each expression has the operator before all the operands and the entire expression is wrapped in parentheses, all precendence is explicit.
-
-Another reason prefix notation can be nice is that it can make long expressions less repetitive. Take this example:
-
-```
-Infix:  1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9
-Prefix: (+ 1 2 3 4 5 6 7 8 9)
+```haskell
+equalsSeven   =  1  +  2  *  3
+equalsSeven'  =  1  + (2  *  3)  -- same as previous equation
+equalsNine    = (1  +  2) *  3   -- force a different order
 ```
 
-With prefix notation, if we plan to use the same operator on many operands, we do not have to repeat the operator between them.
-
-I used integers with all of the above, but they can use floats or ratios just fine. See these examples:
-
-```clj
-(+ 4/3 7/8)   ;=> 53/24
-(- 9 4.2 1/2) ;=> 4.3
-(* 8 1/4)     ;=> 2   ;; this produces 2N which means 2 is a BigInt. 
-(/ 27/2 1.5)  ;=> 3.0
-```
 
 ### Other simple value types
 
-Although we will look at these in more depth later, here are some examples of other types of simple values so that you may recognize them along the way in any code that you see.  The following are examples of Strings, keywords, and booleans:
+The `Bool` type (short for _boolean_) represents "true or false"
+data.  Booleans are heavily used in computing for testing logical
+scenarios, conditionally executing particular behaviour, and so on.
+In Haskell, a value of type `Bool` has either the value `True` or
+`False` - there are no other possible values.  The functions `&&`
+(pronounced "_and_") and `||` (pronounced "_or_") are used to
+evalute whether two `Bool` values are both `True`, or whether either
+of them is `True`, respectively.  The `not` function can be used to
+negate a boolean value.
 
-```clj
-;;Strings
-"Salut tout le monde"
-"Prost!"
-
-;;keywords
-:surname
-:birth-date
-:r2
-
-;;booleans
-true
-false
+```haskell
+andExample1 = True && False   -- False
+andExample2 = True && True    -- True
+orExample1  = False && True   -- True
+orExample2  = False && False  -- False
 ```
 
-## Assigning names to values
+The `Char` type represents textual _characters_.  Some other
+languages have a character type with 256 possible values, but
+Haskell's `Char` type represents Unicode code points.  Literal
+`Char` values are written between single-quotes. All of the
+following are valid `Char` values:
 
-If we had to type the same values over and over, it would be very hard to write a program. What we need are names for values, so we can refer to them in a way we can remember. We do that using `def`. Type the following into your instarepl:
-
-```clj
-(def mangoes 3)
-(def oranges 5)
-(+ mangoes oranges)
+```haskell
+aLetter      = 'a'
+aDigit       = '1'
+aGreekLetter = 'λ'
 ```
 
-When you assign a name to a value, that name is called a _symbol_. You can assign more than simple values to symbols. Try the following:
+The `String` type represents sequences of `Char` values.  String
+values appear between double-quotes.  To include a literal
+double-quote in a string, _escape_ it with a backslash.  Escapes can
+also be used to represent other special characters, including
+newlines and tab-stops.
 
-```clj
-(def fruit (+ mangoes oranges))
-(def average-fruit-amount (/ fruit 2))
-average-fruit-amount
+```haskell
+aString                 = "Hello, world!"
+aStringWithDoubleQuotes = "The cow says \"moo!\""
+aTwoLineString          = "First line.\nSecond line."
 ```
 
-Look at the last line, and see how we can use symbols by themselves to refer to a value.
+## GHCi
 
-### EXERCISE: Basic arithmetic
+GHCi is an interactive (that's what the _i_ stands for) interface to
+Haskell.  (_GHC_ refers to the _Glasgow Haskell Compiler_.) Many
+programming languages have a way to evalute code interactively and
+Haskell is no exception.  GHCi lets you load modules, inspect types
+and definitions, evalute expressions, and more!
 
-Take your height in feet and inches and convert it to inches using arithmetic in Clojure.
+Let's fire up GHCi and explore some of its features.  Run `ghci` in
+your terminal to begin.  You will see some output followed by a
+prompt, similar to the following:
 
-Then convert that to centimeters. There are 2.54 centimeters in an inch.
+```
+% ghci
+GHCi, version 7.8.3: http://www.haskell.org/ghc/  :? for help
+Loading package ghc-prim ... linking ... done.
+Loading package integer-gmp ... linking ... done.
+Loading package base ... linking ... done.
+Prelude> 
+```
 
-Lastly, ask two people near you for their height in centimeters. Find the average of your heights.
+If you type an expression at the prompt, GHCi will evaluate it and
+print the result.  Try typing a simple arithmetic expression such as
+`10 * 10` and see the results.
 
-Bonus: Convert that average back to feet and inches. The feet and the inches will be separate numbers. `(quot x y)` will give you the whole number part when dividing two numbers. `(mod x y)` will give you the remainder when dividing two numbers.
+```
+Prelude> 10 * 10
+100
+```
+
+OK, so you can use GHCi as a calculator.  What else can it do?  We
+can use the `:type` command (or its shorthand, `:t`) to ask GHCi to
+tell us the type of an expression:
+
+```
+Prelude> :type even
+even :: Integral a => a -> Bool
+```
+
+Whoa, what is going on there?  What is that strange double arrow?
+You can ignore it for now, and focus on the familiar parts of the
+type signature.  One could read this type signature in the following
+way: `even` is a _function_ that is _applied_ to one _Integral_
+argument and returns a `Bool` (`True` or `False`).
+
+We can use another GHCi command, `:info` (or `:i`), to find out more
+about this `Integral` thing:
+
+```
+Prelude> :i Integral
+class (Real a, Enum a) => Integral a where
+  ...
+        -- Defined in ‘GHC.Real’
+instance Integral Integer -- Defined in ‘GHC.Real’
+instance Integral Int -- Defined in ‘GHC.Real’
+```
+
+GHCi has told us that `Integral` is a _class_ with several functions
+(omitted for brevity) and two _instances_: `Int` and `Integer`.  You
+will learn more about _type classes_ later, but even without a
+complete understanding, thanks to the useful information GHCi
+emitted you might have inferred that `even` is a function that takes
+a whole number and tells us (by way of its `Bool` return type)
+whether or not it is an even number.
+
+
+### Let bindings
+
+When you are working in GHCi you might need to use a particular
+_expression_ in multiple places.  It would be frustrating to write
+the expression over and over again, so there is a construct for
+binding _names_ to expressions.  In this example we use the `let`
+keyword to bind the name `x` to the expression `2 + 3`, and then
+refer to `x` multiple times.
+
+```
+Prelude> let x = 2 + 3
+Prelude> x / 2 + x
+7.5
+Prelude> x + 2
+7
+```
+
+Aside from the interpreter context, in general Haskell code you can
+use the `let ... in ...` construct anywhere an expression is
+expected:
+
+```haskell
+double :: Integer -> Integer
+double n =
+  let multiplier = 2
+  in  multiplier * n
+```
+
+## EXERCISE: Basic arithmetic
+
+Use GHCi to perform the following calculations.  Feel free to use
+`let` to make it easier to compose your expressions.
+
+Take your height in feet and inches and convert it to inches using
+arithmetic in Haskell (there are twelve inches in one foot).
+
+Then convert that height to centimeters. There are 2.54 centimeters
+in one inch.
+
+Lastly, ask someone near you for their height in centimeters.  Find
+the average of your heights.
