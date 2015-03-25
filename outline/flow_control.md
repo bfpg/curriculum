@@ -1,6 +1,8 @@
 Flow Control
 ============
 
+# TODO - rewrite for Haskell
+
 * `if`
 * Boolean logic
 * `let`

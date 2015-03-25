@@ -1,6 +1,8 @@
 Getting Set Up
 ==============
 
+# TODO - rewrite for Haskell
+
 ## Requirements
 
 Everyone in the workshop should have a laptop. If it is running Windows, it should be running Windows 7 or above. If it is running OS X, it should be running 10.7 "Lion" or above. If it is running Linux, you are probably fine.

@@ -1,6 +1,8 @@
 More Data Structures
 ===============
 
+# TODO - rewrite for Haskell
+
 * Keywords and Maps
 * Collections of Collections
 

@@ -1,6 +1,8 @@
 More Simple Values
 ========================================
 
+# TODO - rewrite for Haskell
+
 * Simple values
     - Strings
     - Booleans and nil

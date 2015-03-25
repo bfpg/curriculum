@@ -1,6 +1,8 @@
 More Functions
 =========
 
+# TODO - rewrite for Haskell
+
 * Important functions
   * Comparison (boolean) functions
   * String functions

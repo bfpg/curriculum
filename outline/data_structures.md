@@ -1,6 +1,8 @@
 Data Structures
 ===============
 
+# TODO - rewrite for Haskell
+
 * Collections
     * Vectors
 

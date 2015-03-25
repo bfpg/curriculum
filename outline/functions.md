@@ -1,6 +1,8 @@
 Functions
 =========
 
+# TODO - rewrite for Haskell
+
 * What are functions?
 * Naming functions
 * Important functions
